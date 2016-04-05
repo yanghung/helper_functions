@@ -1,0 +1,43 @@
+
+//returns first day of the month
+select date_add(  cast('2016-03-27' AS date), 1-day( cast('2016-03-27' AS date) )  ) 
+
+
+//return 1 = sunday, 2 = monday, ... , 7 = saturday
+select pmod(datediff('2016-03-27','2007-12-30'),7) + 1 //returns 1
+select pmod(datediff('2016-03-28','2007-12-30'),7) + 1 //returns 2
+select pmod(datediff('2016-03-31','2007-12-30'),7) + 1 //returns 5
+select pmod(datediff('2016-04-02','2007-12-30'),7) + 1 //returns 7
+
+
+//returns 2016-04-02 the week_end date
+select date_add(    '2016-03-27' , 6 - pmod(datediff('2016-03-27','2007-12-30'),7)     ) 
+UNION ALL
+select date_add(    '2016-03-28' , 6 - pmod(datediff('2016-03-28','2007-12-30'),7)     ) 
+UNION ALL
+select date_add(    '2016-03-29' , 6 - pmod(datediff('2016-03-29','2007-12-30'),7)     ) 
+UNION ALL
+select date_add(    '2016-03-30' , 6 - pmod(datediff('2016-03-30','2007-12-30'),7)     ) 
+UNION ALL
+select date_add(    '2016-03-31' , 6 - pmod(datediff('2016-03-31','2007-12-30'),7)     ) 
+UNION ALL
+select date_add(    '2016-04-01' , 6 - pmod(datediff('2016-04-01','2007-12-30'),7)     ) 
+UNION ALL
+select date_add(    '2016-04-02' , 6 - pmod(datediff('2016-04-02','2007-12-30'),7)     ) 
+
+
+
+//returns 2016-03-26 the week_end date
+select date_add(    '2016-03-20' , 6 - pmod(datediff('2016-03-20','2007-12-30'),7)     ) 
+UNION ALL
+select date_add(    '2016-03-21' , 6 - pmod(datediff('2016-03-21','2007-12-30'),7)     ) 
+UNION ALL
+select date_add(    '2016-03-22' , 6 - pmod(datediff('2016-03-22','2007-12-30'),7)     ) 
+UNION ALL
+select date_add(    '2016-03-23' , 6 - pmod(datediff('2016-03-23','2007-12-30'),7)     ) 
+UNION ALL
+select date_add(    '2016-03-24' , 6 - pmod(datediff('2016-03-24','2007-12-30'),7)     ) 
+UNION ALL
+select date_add(    '2016-03-25' , 6 - pmod(datediff('2016-03-25','2007-12-30'),7)     ) 
+UNION ALL
+select date_add(    '2016-03-26' , 6 - pmod(datediff('2016-03-26','2007-12-30'),7)     ) 
