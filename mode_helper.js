@@ -4,6 +4,57 @@ Helper functions to use in mode dataviz proof of concept
 
 
 
+
+/**
+Description:
+Various Number Formats
+*/
+let dateFormat_mm_dd_yyyy = d3.time.format('%m/%d/%y');
+let dateFormat_mm_dd = d3.time.format('%m/%d');
+let dateFormat_mmm_yyyy = d3.time.format('%b %Y');
+let dateFormat_yyyy_mm_dd = d3.time.format('%Y-%m-%d');
+let numberFormat = d3.format('.2f');
+let numberFormat_0_decimal = d3.format(",.0f");
+let numberFormat_no_decimal = d3.format(',');
+let numberFormat_no_decimal_axis = d3.format('d');
+let fullDateFormat = d3.time.format('%m/%x/%y');
+let yearFormat = d3.time.format('%Y');
+let monthFormat = d3.time.format('%b');
+let dayFormat = d3.time.format('%d');
+let dayOfWeekFormat = d3.time.format('%a');
+let currencyFormat = d3.format('$,.2f');
+let currencyFormat_no_decimal = d3.format('$,.0f');
+let percentFormat = d3.format(',.2%');
+let percentFormat_no_decimal = d3.format('%');
+function currencyFormat_smart(d) {
+  var abs_d = Math.abs(d);
+  if (abs_d>=1e9) {  return "$" + numberFormat_no_decimal(d / 1e9) + " B";  }
+  else if (abs_d>=1e6) {  return "$" + numberFormat_no_decimal(d / 1e6) + " M";  }
+  else if (abs_d>=1e5) {  return "$" + numberFormat_no_decimal(d / 1e3) + " K";  }
+  else if (abs_d>=1e4) {  return "$" + numberFormat_no_decimal(d / 1e3) + " K";  }
+  else if (abs_d>=1e3) {  return currencyFormat_no_decimal(d);  }
+  else {  return currencyFormat(d);  }
+}
+function numberFormat_smart(d) {
+  var abs_d = Math.abs(d);
+  if (abs_d>=1e9) {  return numberFormat_no_decimal(d / 1e9) + " B";  }
+  else if (abs_d>=1e6) {  return numberFormat_no_decimal(d / 1e6) + " M";  }
+  else if (abs_d>=1e5) {  return numberFormat_no_decimal(d / 1e3) + " K";  }
+  else if (abs_d>=1e4) {  return numberFormat_no_decimal(d / 1e3) + " K";  }
+  else if (abs_d>=1e3) {  return numberFormat_0_decimal(d);  }
+  else {  return numberFormat(d);  }
+}
+function percentFormat_smart(d) {
+  var abs_d = Math.abs(d);
+  if (abs_d>=10) {  return percentFormat_no_decimal(Math.round(d));  }
+  else {  return percentFormat(d);  }
+}
+
+
+
+
+
+
 /**
 Description:
 Given the "queryName" from mode as the parameter, gets the data (in JSON form)
@@ -48,44 +99,4 @@ function addToDropdown(the_list, dropdown_html_id) {
     opt.innerHTML = the_value;
     document.getElementById(dropdown_html_id).appendChild(opt);
   }
-};
-
-
-
-/**
-Description:
-Generate a line chart given a
-
-Example:
-
-*/
-function create_line_chart(options, html_id_chart) {
-  window["options.var_chart_name"]= dc.lineChart(html_id_chart);
-  options.var_chart_name
-    .width(options.num_width)
-    .height(options.num_height)
-    .dimension(options.var_dimension)
-    .group(options.var_group)
-    .brushOn(options.bool_brush_on)
-    .margins({top: options.num_top, right: options.num_right, bottom: options.num_bottom, left: options.num_left});
-  (options.var_title) ? options.var_chart_name.title(options.var_title) : null; //if you set title then include it in options, otherwise do nothing
-  (options.var_x_axis) ? options.var_chart_name.x(options.var_x_axis) : null; //if you set x axis domain then include it in options, otherwise do nothing
-  (options.str_x_axis_label) ? options.var_chart_name.xAxisLabel(options.str_x_axis_label) : null; //if you set x axis label then include it in options, otherwise do nothing
-  (options.str_y_axis_label) ? options.var_chart_name.yAxisLabel(options.str_y_axis_label) : null; //if you set y axis label then include it in options, otherwise do nothing
-  (options.str_x_axis_format) ? options.var_chart_name.xAxis().tickFormat(options.str_x_axis_format) : null; //if you set y axis format then include it in options, otherwise do nothing
-  (options.str_y_axis_format) ? options.var_chart_name.yAxis().tickFormat(options.str_y_axis_format) : null; //if you set y axis format then include it in options, otherwise do nothing
-  (options.bool_elastic_x) ? options.var_chart_name.elasticX(options.bool_elastic_x) : null; //if you set elastic x then include it in options, otherwise do nothing
-  (options.bool_elastic_y) ? options.var_chart_name.elasticY(options.bool_elastic_y) : null; //if you set elastic y then include it in options, otherwise do nothing
-  (options.bool_render_area) ? options.var_chart_name.renderArea(options.bool_render_area) : null; //if you set renderArea then include it in options, otherwise do nothing
-  (options.bool_render_data_points) ? options.var_chart_name.renderDataPoints(options.bool_render_data_points) : null; //if you set renderDataPoints then include it in options, otherwise do nothing
-  (options.bool_render_horizontal_grid_lines) ? options.var_chart_name.renderHorizontalGridLines(options.bool_render_horizontal_grid_lines) : null; //if you set renderHorizontalGridLines then include it in options, otherwise do nothing
-  (options.bool_render_vertical_grid_lines) ? options.var_chart_name.renderVerticalGridLines(options.bool_render_vertical_grid_lines) : null; //if you set renderVerticalGridLines then include it in options, otherwise do nothing
-  (options.bool_mouse_zoomable) ? options.var_chart_name.mouseZoomable(options.bool_mouse_zoomable) : null; //if you set mouseZoomable then include it in options, otherwise do nothing
-  (options.num_clip_padding) ? options.var_chart_name.clipPadding(options.num_clip_padding) : null; //if you set clipPadding then include it in options, otherwise do nothing
-  (options.var_value_accessor) ? options.var_chart_name.valueAccessor(options.var_value_accessor) : null;
-  (options.var_render_data_points) ? options.var_chart_name.renderDataPoints(options.var_render_data_points) : null;
-  (options.var_key_accessor) ? options.var_chart_name.keyAccessor(options.var_key_accessor) : null;
-  (options.var_x_ordering) ? options.var_chart_name.ordering(options.var_x_ordering) : null;
-  (options.var_dash_style) ? options.var_chart_name.dashStyle(options.var_dash_style) : null;
-  (options.var_colors) ? options.var_chart_name.colors(options.var_colors) : null; //if you set colors function then include it in options, otherwise do nothing
 };
