@@ -19,3 +19,14 @@ function getDataFromQuery(queryName, parameter) {
     return data;
   }
 }
+
+
+function addToDropdown(the_list, dropdown_html_id) {
+  for (var i=0; i<the_list.length; i++) {
+    var opt = document.createElement('option');
+    var the_value=the_list[i];
+    opt.value = the_value;
+    opt.innerHTML = the_value;
+    document.getElementById(dropdown_html_id).appendChild(opt);
+  }
+}
