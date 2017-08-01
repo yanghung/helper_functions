@@ -138,28 +138,26 @@ function createLineChart(the_chart, options) {
   (options.num_height) ? the_chart.height(options.num_height): null;
   (options.num_width) ? the_chart.width(options.num_width): null;
   (options.margin_setting) ? the_chart.margins(options.margin_setting): null;
-  (options.bool_brush_on) ? the_chart.brushOn(options.bool_brush_on): the_chart.brushOn(false);
-  (options.var_key_accessor) ? the_chart.keyAccessor(options.var_key_accessor): null;
+  (options.key_accessor) ? the_chart.keyAccessor(options.key_accessor): null;
   (options.value_accessor) ? the_chart.valueAccessor(options.value_accessor): null;
   (options.tooltip) ? the_chart.title(options.tooltip): null; //if you set title then include it in options, otherwise do nothing
   (options.datapoints) ? the_chart.renderDataPoints(options.datapoints): null;
-  (options.str_x_axis_label) ? the_chart.xAxisLabel(options.str_x_axis_label): null; //if you set x axis label then include it in options, otherwise do nothing
-  (options.str_y_axis_label) ? the_chart.yAxisLabel(options.str_y_axis_label): null; //if you set y axis label then include it in options, otherwise do nothing
-  (options.str_x_axis_format) ? the_chart.xAxis().tickFormat(options.str_x_axis_format): null; //if you set y axis format then include it in options, otherwise do nothing
-  (options.str_y_axis_format) ? the_chart.yAxis().tickFormat(options.str_y_axis_format): null; //if you set y axis format then include it in options, otherwise do nothing
-  (options.key_accessor) ? the_chart.keyAccessor(options.key_accessor): null;
+  (options.x_axis_label) ? the_chart.xAxisLabel(options.str_x_axis_label): null; //if you set x axis label then include it in options, otherwise do nothing
+  (options.y_axis_label) ? the_chart.yAxisLabel(options.str_y_axis_label): null; //if you set y axis label then include it in options, otherwise do nothing
+  (options.x_axis_format) ? the_chart.xAxis().tickFormat(options.str_x_axis_format): null; //if you set y axis format then include it in options, otherwise do nothing
+  (options.y_axis_format) ? the_chart.yAxis().tickFormat(options.str_y_axis_format): null; //if you set y axis format then include it in options, otherwise do nothing
+  (options.dash_style) ? the_chart.dashStyle(options.dash_style) : null;
+  (options.colors) ? the_chart.colors(options.colors) : null; //if you set colors function then include it in options, otherwise do nothing
 
   (options.bool_is_x_ordinal) ? the_chart.xUnits(dc.units.ordinal): null;
+  (options.bool_brush_on) ? the_chart.brushOn(options.bool_brush_on): the_chart.brushOn(false);
   (options.bool_elastic_x) ? the_chart.elasticX(options.bool_elastic_x): null; //if you set elastic x then include it in options, otherwise do nothing
   (options.bool_elastic_y) ? the_chart.elasticY(options.bool_elastic_y): null; //if you set elastic y then include it in options, otherwise do nothing
-  //(options.resize) ? the_chart.useViewBoxResizing(options.resize): the_chart.useViewBoxResizing(false);
-  // (options.bool_render_area) ? the_chart.renderArea(options.bool_render_area) : null; //if you set renderArea then include it in options, otherwise do nothing
-  // (options.bool_render_data_points) ? the_chart.renderDataPoints(options.bool_render_data_points) : null; //if you set renderDataPoints then include it in options, otherwise do nothing
-  // (options.bool_render_horizontal_grid_lines) ? the_chart.renderHorizontalGridLines(options.bool_render_horizontal_grid_lines) : null; //if you set renderHorizontalGridLines then include it in options, otherwise do nothing
-  // (options.bool_render_vertical_grid_lines) ? the_chart.renderVerticalGridLines(options.bool_render_vertical_grid_lines) : null; //if you set renderVerticalGridLines then include it in options, otherwise do nothing
-  // (options.bool_mouse_zoomable) ? the_chart.mouseZoomable(options.bool_mouse_zoomable) : null; //if you set mouseZoomable then include it in options, otherwise do nothing
+  (options.bool_render_area) ? the_chart.renderArea(options.bool_render_area) : null; //if you set renderArea then include it in options, otherwise do nothing
+  (options.bool_render_horizontal_grid_lines) ? the_chart.renderHorizontalGridLines(options.bool_render_horizontal_grid_lines) : null; //if you set renderHorizontalGridLines then include it in options, otherwise do nothing
+  (options.bool_render_vertical_grid_lines) ? the_chart.renderVerticalGridLines(options.bool_render_vertical_grid_lines) : null; //if you set renderVerticalGridLines then include it in options, otherwise do nothing
+  (options.bool_mouse_zoomable) ? the_chart.mouseZoomable(options.bool_mouse_zoomable) : null; //if you set mouseZoomable then include it in options, otherwise do nothing
+  // (options.resize) ? the_chart.useViewBoxResizing(options.resize): the_chart.useViewBoxResizing(false);
   // (options.num_clip_padding) ? the_chart.clipPadding(options.num_clip_padding) : null; //if you set clipPadding then include it in options, otherwise do nothing
-  // (options.var_x_ordering) ? the_chart.ordering(options.var_x_ordering) : null;
-  // (options.var_dash_style) ? the_chart.dashStyle(options.var_dash_style) : null;
-  // (options.var_colors) ? the_chart.colors(options.var_colors) : null; //if you set colors function then include it in options, otherwise do nothing
+  // (options.x_ordering) ? the_chart.ordering(options.x_ordering) : null;
 };
