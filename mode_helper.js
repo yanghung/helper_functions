@@ -149,6 +149,7 @@ function createLineChart(the_chart, options) {
   (options.dash_style) ? the_chart.dashStyle(options.dash_style) : null;
   (options.colors) ? the_chart.colors(options.colors) : null; //if you set colors function then include it in options, otherwise do nothing
 
+  (options.bool_use_default_filters)? the_chart.controlsUseVisibility(true) : null;
   (options.bool_is_x_ordinal) ? the_chart.xUnits(dc.units.ordinal): null;
   (options.bool_brush_on) ? the_chart.brushOn(options.bool_brush_on): the_chart.brushOn(false);
   (options.bool_elastic_x) ? the_chart.elasticX(options.bool_elastic_x): null; //if you set elastic x then include it in options, otherwise do nothing
