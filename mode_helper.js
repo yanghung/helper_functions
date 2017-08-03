@@ -181,7 +181,7 @@ function createChart(chart_settings) {
       console.log('dont recognize the chart_type: '+chart_type+' for the series_id='+series_id);
     }
   })
-  createCompositeChart(window[chart_id], settings_row2_chart, series_array);
+  createCompositeChart(window[chart_id], chart_settings, series_array);
 }
 
 
