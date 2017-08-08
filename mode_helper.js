@@ -217,7 +217,7 @@ function createCompositeChart(the_chart, options, data_series_array) {
   // (options.resize) ? the_chart.useViewBoxResizing(options.resize): the_chart.useViewBoxResizing(false);
   // (options.num_clip_padding) ? the_chart.clipPadding(options.num_clip_padding) : null; //if you set clipPadding then include it in options, otherwise do nothing
   // (options.x_ordering) ? the_chart.ordering(options.x_ordering) : null;
-  (options.tooltip) ? the_chart_obj.title(options.tooltip): null; //if you set title then include it in options, otherwise do nothing
+  (options.tooltip) ? the_chart.title(options.tooltip): null; //if you set title then include it in options, otherwise do nothing
 };
 
 
