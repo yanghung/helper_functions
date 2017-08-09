@@ -217,7 +217,7 @@ function createCompositeChart(the_chart, options, data_series_array) {
   // (options.num_clip_padding) ? the_chart.clipPadding(options.num_clip_padding) : null; //if you set clipPadding then include it in options, otherwise do nothing
   // (options.x_ordering) ? the_chart.ordering(options.x_ordering) : null;
   (options.tooltip) ? the_chart.title(options.tooltip): null; //if you set title then include it in options, otherwise do nothing
-  
+
   the_chart.compose(data_series_array); // must do this last
 };
 
@@ -237,6 +237,9 @@ function createLineChart(the_chart, options) {
     .group(options.group[0], options.group[1])          //y-axis variable "group" [0]: the crossfilter group var, [1]: the optional legend label
   ;
   /** Optional Parameters */
+  (options.width)? the_chart_obj.width(options.width) : null;
+  (options.height)? the_chart_obj.height(options.height) : null;
+  (options.margins)? the_chart_obj.margins(options.margins) : null;
   (options.key_accessor) ? the_chart_obj.keyAccessor(options.key_accessor): null;
   (options.value_accessor) ? the_chart_obj.valueAccessor(options.value_accessor): null;
   (options.tooltip) ? the_chart_obj.title(options.tooltip): null; //if you set title then include it in options, otherwise do nothing
