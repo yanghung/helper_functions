@@ -237,9 +237,23 @@ function createLineChart(the_chart, options) {
     .group(options.group[0], options.group[1])          //y-axis variable "group" [0]: the crossfilter group var, [1]: the optional legend label
   ;
   /** Optional Parameters */
-  (options.width)? the_chart_obj.width(options.width) : null;
-  (options.height)? the_chart_obj.height(options.height) : null;
+  (options.width)  ? the_chart.width(options.width) : null;
+  (options.height)  ? the_chart.height(options.height) : null;
   (options.margins)? the_chart_obj.margins(options.margins) : null;
+  (options.x_axis) ? the_chart.x(options.x_axis) : null; //x-axis start and end points
+  (options.legend) ? the_chart.legend(options.legend) : null;
+  (options.x_axis_label) ? the_chart.xAxisLabel(options.x_axis_label): null; //if you set x axis label then include it in options, otherwise do nothing
+  (options.y_axis_label) ? the_chart.yAxisLabel(options.y_axis_label): null; //if you set y axis label then include it in options, otherwise do nothing
+  (options.x_axis_format) ? the_chart.xAxis().tickFormat(options.x_axis_format): null; //if you set y axis format then include it in options, otherwise do nothing
+  (options.y_axis_format) ? the_chart.yAxis().tickFormat(options.y_axis_format): null; //if you set y axis format then include it in options, otherwise do nothing
+  (options.bool_is_x_ordinal) ? the_chart.xUnits(dc.units.ordinal): null;
+  (options.bool_brush_on) ? the_chart.brushOn(options.bool_brush_on): the_chart.brushOn(false);
+  (options.bool_elastic_x) ? the_chart.elasticX(options.bool_elastic_x): null; //if you set elastic x then include it in options, otherwise do nothing
+  (options.bool_elastic_y) ? the_chart.elasticY(options.bool_elastic_y): null; //if you set elastic y then include it in options, otherwise do nothing
+  (options.bool_render_horizontal_grid_lines) ? the_chart.renderHorizontalGridLines(options.bool_render_horizontal_grid_lines) : null; //if you set renderHorizontalGridLines then include it in options, otherwise do nothing
+  (options.bool_render_vertical_grid_lines) ? the_chart.renderVerticalGridLines(options.bool_render_vertical_grid_lines) : null; //if you set renderVerticalGridLines then include it in options, otherwise do nothing
+  (options.bool_mouse_zoomable) ? the_chart.mouseZoomable(options.bool_mouse_zoomable) : null; //if you set mouseZoomable then include it in options, otherwise do nothing
+
   (options.key_accessor) ? the_chart_obj.keyAccessor(options.key_accessor): null;
   (options.value_accessor) ? the_chart_obj.valueAccessor(options.value_accessor): null;
   (options.tooltip) ? the_chart_obj.title(options.tooltip): null; //if you set title then include it in options, otherwise do nothing
