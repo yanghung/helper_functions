@@ -198,7 +198,6 @@ function createCompositeChart(the_chart, options, data_series_array) {
     .width(options.width)
     .height(options.height)
     .margins(options.margins)
-    .compose(data_series_array)
   ;
   /** Optional Parameters */
   (options.x_axis) ? the_chart.x(options.x_axis) : null; //x-axis start and end points
@@ -218,6 +217,8 @@ function createCompositeChart(the_chart, options, data_series_array) {
   // (options.num_clip_padding) ? the_chart.clipPadding(options.num_clip_padding) : null; //if you set clipPadding then include it in options, otherwise do nothing
   // (options.x_ordering) ? the_chart.ordering(options.x_ordering) : null;
   (options.tooltip) ? the_chart.title(options.tooltip): null; //if you set title then include it in options, otherwise do nothing
+  
+  the_chart.compose(data_series_array); // must do this last
 };
 
 
