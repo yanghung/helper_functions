@@ -165,9 +165,9 @@ Description:
 Given an an object with settings for a chart, create composite chart that can hold lots of other different 'charts'
 
 Example:
-createChart(settings_row2_chart);
+createChartMultiSeries(settings_row2_chart);
 */
-function createChart(chart_settings) {
+function createChartMultiSeries(chart_settings) {
   var series_array=[];
   const chart_id=chart_settings['chart_id'];
   window[chart_id] = dc.compositeChart('#'+chart_id); // declare variables to map to html_div_id
@@ -182,6 +182,28 @@ function createChart(chart_settings) {
     }
   })
   createCompositeChart(window[chart_id], chart_settings, series_array);
+}
+
+
+/**
+Description:
+Given an an object with settings for a chart, create the chart
+
+Example:
+createChartMultiSeries(settings_row2_chart);
+*/
+function createChartSingleSeries(chart_settings) {
+  const chart_id = chart_settings['chart_id'];
+  const chart_type = chart_settings['chart_type'];
+  if (chart_type=='line_chart') {
+    window[chart_id] = dc.lineChart('#'+chart_id);
+    createLineChart(window[chart_id], chart_settings);
+  } else if (chart_type =='data_table') {
+    window[chart_id] = dc.dataTable('#'+chart_id);
+    createDataTable(window[chart_id], chart_settings);
+  } else {
+    console.log('dont recognize the chart_type: '+chart_type+' for the series_id='+series_id);
+  }
 }
 
 
@@ -217,10 +239,31 @@ function createCompositeChart(the_chart, options, data_series_array) {
   // (options.num_clip_padding) ? the_chart.clipPadding(options.num_clip_padding) : null; //if you set clipPadding then include it in options, otherwise do nothing
   // (options.x_ordering) ? the_chart.ordering(options.x_ordering) : null;
   (options.tooltip) ? the_chart.title(options.tooltip): null; //if you set title then include it in options, otherwise do nothing
-
   the_chart.compose(data_series_array); // must do this last
 };
 
+
+/**
+Description:
+Helper function to create Data Table, used in createChartSingleSeries function
+
+Example:
+createDataTable(window[chart_name], chart_opts);
+*/
+function createDataTable(the_chart, options) {
+  /** Required Parameters */
+  the_chart
+    .dimension(options.dimension)                       //metrics
+    .group(function (p) { return "" })
+    .columns(options.columns)
+    .order(d3.descending)                               //must be d3.descending as order
+  ;
+  /** Optional Parameters */
+  (options.width)  ? the_chart.width(options.width) : null;
+  (options.height)  ? the_chart.height(options.height) : null;
+  (options.sort_logic) ? the_chart.sortBy(options.sort_logic) : null;
+  (options.order) ? the_chart.sortBy(options.order) : null;
+};
 
 /**
 Description:
@@ -231,15 +274,14 @@ createLineChart(window[chart_name], chart_opts);
 */
 function createLineChart(the_chart, options) {
   /** Required Parameters */
-  var the_chart_obj = the_chart;
-  the_chart_obj
+  the_chart
     .dimension(options.dimension)                       //x-axis variable "dimension"
     .group(options.group[0], options.group[1])          //y-axis variable "group" [0]: the crossfilter group var, [1]: the optional legend label
   ;
   /** Optional Parameters */
   (options.width)  ? the_chart.width(options.width) : null;
   (options.height)  ? the_chart.height(options.height) : null;
-  (options.margins)? the_chart_obj.margins(options.margins) : null;
+  (options.margins)? the_chart.margins(options.margins) : null;
   (options.x_axis) ? the_chart.x(options.x_axis) : null; //x-axis start and end points
   (options.legend) ? the_chart.legend(options.legend) : null;
   (options.x_axis_label) ? the_chart.xAxisLabel(options.x_axis_label): null; //if you set x axis label then include it in options, otherwise do nothing
@@ -253,19 +295,14 @@ function createLineChart(the_chart, options) {
   (options.bool_render_horizontal_grid_lines) ? the_chart.renderHorizontalGridLines(options.bool_render_horizontal_grid_lines) : null; //if you set renderHorizontalGridLines then include it in options, otherwise do nothing
   (options.bool_render_vertical_grid_lines) ? the_chart.renderVerticalGridLines(options.bool_render_vertical_grid_lines) : null; //if you set renderVerticalGridLines then include it in options, otherwise do nothing
   (options.bool_mouse_zoomable) ? the_chart.mouseZoomable(options.bool_mouse_zoomable) : null; //if you set mouseZoomable then include it in options, otherwise do nothing
-
-  (options.key_accessor) ? the_chart_obj.keyAccessor(options.key_accessor): null;
-  (options.value_accessor) ? the_chart_obj.valueAccessor(options.value_accessor): null;
-  (options.tooltip) ? the_chart_obj.title(options.tooltip): null; //if you set title then include it in options, otherwise do nothing
-  (options.datapoints) ? the_chart_obj.renderDataPoints(options.datapoints): null;
-  (options.dash_style) ? the_chart_obj.dashStyle(options.dash_style) : null;
-  (options.colors) ? the_chart_obj.colors(options.colors) : null; //if you set colors function then include it in options, otherwise do nothing
+  (options.key_accessor) ? the_chart.keyAccessor(options.key_accessor): null;
+  (options.value_accessor) ? the_chart.valueAccessor(options.value_accessor): null;
+  (options.tooltip) ? the_chart.title(options.tooltip): null; //if you set title then include it in options, otherwise do nothing
+  (options.datapoints) ? the_chart.renderDataPoints(options.datapoints): null;
+  (options.dash_style) ? the_chart.dashStyle(options.dash_style) : null;
+  (options.colors) ? the_chart.colors(options.colors) : null; //if you set colors function then include it in options, otherwise do nothing
   (options.bool_use_default_filters)? the_chart.controlsUseVisibility(true) : null;
-  // (options.bool_is_x_ordinal) ? the_chart.xUnits(dc.units.ordinal): null;
   // (options.bool_render_area) ? the_chart.renderArea(options.bool_render_area) : null; //if you set renderArea then include it in options, otherwise do nothing
   // (options.bool_mouse_zoomable) ? the_chart.mouseZoomable(options.bool_mouse_zoomable) : null; //if you set mouseZoomable then include it in options, otherwise do nothing
-  // (options.resize) ? the_chart.useViewBoxResizing(options.resize): the_chart.useViewBoxResizing(false);
-  // (options.num_clip_padding) ? the_chart.clipPadding(options.num_clip_padding) : null; //if you set clipPadding then include it in options, otherwise do nothing
   // (options.x_ordering) ? the_chart.ordering(options.x_ordering) : null;
-  return the_chart_obj;
 };
