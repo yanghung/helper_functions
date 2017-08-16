@@ -263,7 +263,7 @@ function createDataTable(the_chart, options) {
   (options.height)  ? the_chart.height(options.height) : null;
   (options.sort_logic) ? the_chart.sortBy(options.sort_logic) : null;
   (options.order) ? the_chart.sortBy(options.order) : null;
-  return the_chart;
+  return the_chart; //add return so it works with createCompositeChart
 };
 
 /**
@@ -306,5 +306,5 @@ function createLineChart(the_chart, options) {
   // (options.bool_render_area) ? the_chart.renderArea(options.bool_render_area) : null; //if you set renderArea then include it in options, otherwise do nothing
   // (options.bool_mouse_zoomable) ? the_chart.mouseZoomable(options.bool_mouse_zoomable) : null; //if you set mouseZoomable then include it in options, otherwise do nothing
   // (options.x_ordering) ? the_chart.ordering(options.x_ordering) : null;
-  return the_chart;
+  return the_chart; //add return so it works with createCompositeChart
 };
