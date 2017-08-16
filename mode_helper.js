@@ -190,7 +190,7 @@ Description:
 Given an an object with settings for a chart, create the chart
 
 Example:
-createChartMultiSeries(settings_row2_chart);
+createChartSingleSeries(settings_row2_chart);
 */
 function createChartSingleSeries(chart_settings) {
   const chart_id = chart_settings['chart_id'];
@@ -245,7 +245,7 @@ function createCompositeChart(the_chart, options, data_series_array) {
 
 /**
 Description:
-Helper function to create Data Table, used in createChartSingleSeries function
+Helper function to create Data Table
 
 Example:
 createDataTable(window[chart_name], chart_opts);
