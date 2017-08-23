@@ -28,7 +28,8 @@ let percentFormat = d3.format(',.2%');
 let percentFormat_no_decimal = d3.format('%');
 function currencyFormat_smart(d) {
   var abs_d = Math.abs(d);
-  if (abs_d>=1e9) {  return "$" + numberFormat_no_decimal(d / 1e9) + " B";  }
+  if (abs_d==0) { return '$0'; }
+  else if (abs_d>=1e9) {  return "$" + numberFormat_no_decimal(d / 1e9) + " B";  }
   else if (abs_d>=1e6) {  return "$" + numberFormat_no_decimal(d / 1e6) + " M";  }
   else if (abs_d>=1e5) {  return "$" + numberFormat_no_decimal(d / 1e3) + " K";  }
   else if (abs_d>=1e4) {  return "$" + numberFormat_no_decimal(d / 1e3) + " K";  }
@@ -37,7 +38,8 @@ function currencyFormat_smart(d) {
 }
 function numberFormat_smart(d) {
   var abs_d = Math.abs(d);
-  if (abs_d>=1e9) {  return numberFormat_no_decimal(d / 1e9) + " B";  }
+  if (abs_d==0) { return '0'; }
+  else if (abs_d>=1e9) {  return numberFormat_no_decimal(d / 1e9) + " B";  }
   else if (abs_d>=1e6) {  return numberFormat_no_decimal(d / 1e6) + " M";  }
   else if (abs_d>=1e5) {  return numberFormat_no_decimal(d / 1e3) + " K";  }
   else if (abs_d>=1e4) {  return numberFormat_no_decimal(d / 1e3) + " K";  }
@@ -46,7 +48,8 @@ function numberFormat_smart(d) {
 }
 function percentFormat_smart(d) {
   var abs_d = Math.abs(d);
-  if (abs_d>=10) {  return percentFormat_no_decimal(Math.round(d));  }
+  if (abs_d==0) { return '0%'; }
+  else if (abs_d>=0.01) {  return percentFormat_no_decimal(d);  }
   else {  return percentFormat(d);  }
 }
 
