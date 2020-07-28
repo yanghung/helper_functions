@@ -1,0 +1,16 @@
+    const dateFormat_mm_dd = d3.timeFormat('%m/%d');
+    const dateFormat_mmm_yyyy = d3.timeFormat('%b %Y');
+    const dateFormat_yyyy_mm_dd = d3.timeFormat('%Y-%m-%d');
+    const numberFormat = d3.format('.2f');
+    const numberFormat_0_decimal = d3.format(",.0f");
+    const numberFormat_no_decimal = d3.format(',');
+    const numberFormat_no_decimal_axis = d3.format('d');
+    const fullDateFormat = d3.timeFormat('%m/%x/%y');
+    const yearFormat = d3.timeFormat('%Y');
+    const monthFormat = d3.timeFormat('%b');
+    const dayFormat = d3.timeFormat('%d');
+    const dayOfWeekFormat = d3.timeFormat('%a');
+    const currencyFormat = d3.format('$,.2f');
+    const currencyFormat_no_decimal = d3.format('$,.0f');
+    const percentFormat = d3.format(',.2%');
+    const percentFormat_no_decimal = d3.format('%');
