@@ -19,9 +19,23 @@ const percentFormat_no_decimal = d3.format('%');
 
 /**
 Description:
-Given a metric group (crossfiltered data after reduce function) of values, filter to return only records where key[key_index]==match_value
+  Reset the dc js filters
 Example:
-var metricsPanel=filterByOneKey(metricsExtensionTypeTheDate, 0, 'panel');
+Note: Used in multi data series charts when you first need to declare a dimension with multiple keys
+*/
+function resetFilter(dimension) {
+  dimension.filterAll();
+  dc.redrawAll();
+}
+
+
+
+
+/**
+Description:
+  Given a metric group (crossfiltered data after reduce function) of values, filter to return only records where key[key_index]==match_value
+Example:
+  var metricsPanel=filterByOneKey(metricsExtensionTypeTheDate, 0, 'panel');
 Note: Used in multi data series charts when you first need to declare a dimension with multiple keys
 */
 function filterByOneKey(metrics_group, key_index, match_value) {
