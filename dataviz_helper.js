@@ -280,6 +280,8 @@ function createBarChart(the_chart, options) {
   (options.x_axis) ? the_chart.x(options.x_axis) : null; //x-axis start and end points
   (options.bool_elastic_y) ? the_chart.elasticY(options.bool_elastic_y): null; //if you set elastic y then include it in options, otherwise do nothing
   (options.bool_render_horizontal_grid_lines) ? the_chart.renderHorizontalGridLines(options.bool_render_horizontal_grid_lines) : null; //if you set renderHorizontalGridLines then include it in options, otherwise do nothing
+  (options.bool_center_bar) ? the_chart.centerBar(options.bool_center_bar): null;
+  (options.gap) ? the_chart.gap(options.gap): null;
   (options.key_accessor) ? the_chart.keyAccessor(options.key_accessor): null;
   (options.value_accessor) ? the_chart.valueAccessor(options.value_accessor): null;
   return the_chart; //add return so it works with createCompositeChart
