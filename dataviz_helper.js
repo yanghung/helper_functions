@@ -123,6 +123,9 @@ function createChartSingleSeries(chart_settings) {
   } else if (chart_type =='data_table') {
     window[chart_id] = dc.dataTable('#'+chart_id);
     createDataTable(window[chart_id], chart_settings);
+  } else if (chart_type =='pie_chart') {
+    window[chart_id] = dc.pieChart('#'+chart_id);
+    createPieChart(window[chart_id], chart_settings);
   } else {
     console.log('dont recognize the chart_type: '+chart_type+' for the series_id='+series_id);
   }
