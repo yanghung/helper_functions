@@ -244,7 +244,7 @@ function createPieChart(the_chart, options) {
   /** Required Parameters */
   the_chart
     .dimension(options.dimension)                       //x-axis variable "dimension"
-    .group(options.group[0], options.group[1])          //y-axis variable "group" [0]: the crossfilter group var, [1]: the optional legend label
+    .group(options.group)          //y-axis variable "group" [0]: the crossfilter group var, [1]: the optional legend label
   ;
   /** Optional Parameters */
   (options.width)  ? the_chart.width(options.width) : null;
