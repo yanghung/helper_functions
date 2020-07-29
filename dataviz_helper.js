@@ -230,3 +230,27 @@ function createLineChart(the_chart, options) {
   // (options.x_ordering) ? the_chart.ordering(options.x_ordering) : null;
   return the_chart; //add return so it works with createCompositeChart
 };
+
+
+
+
+/**
+Description:
+Helper function to create line chart, used in createChart function
+Example:
+createLineChart(window[chart_name], chart_opts);
+*/
+function createPieChart(the_chart, options) {
+  /** Required Parameters */
+  the_chart
+    .dimension(options.dimension)                       //x-axis variable "dimension"
+    .group(options.group[0], options.group[1])          //y-axis variable "group" [0]: the crossfilter group var, [1]: the optional legend label
+  ;
+  /** Optional Parameters */
+  (options.width)  ? the_chart.width(options.width) : null;
+  (options.height)  ? the_chart.height(options.height) : null;
+  (options.radius)  ? the_chart.radius(options.radius) : null;
+  (options.innerRadius)  ? the_chart.innerRadius(options.innerRadius) : null;
+
+  return the_chart; //add return so it works with createCompositeChart
+};
