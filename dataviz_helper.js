@@ -127,7 +127,7 @@ function createChartSingleSeries(chart_settings) {
     window[chart_id] = dc.pieChart('#'+chart_id);
     createPieChart(window[chart_id], chart_settings);
   } else {
-    console.log('dont recognize the chart_type: '+chart_type+' for the series_id='+series_id);
+    //console.log('dont recognize the chart_type: '+chart_type+' for the series_id='+series_id);
   }
 }
 
