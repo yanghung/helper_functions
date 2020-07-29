@@ -126,6 +126,9 @@ function createChartSingleSeries(chart_settings) {
   } else if (chart_type =='pie_chart') {
     window[chart_id] = dc.pieChart('#'+chart_id);
     createPieChart(window[chart_id], chart_settings);
+  } else if (chart_type =='bar_chart') {
+    window[chart_id] = dc.barChart('#'+chart_id);
+    createPieChart(window[chart_id], chart_settings);
   } else {
     //console.log('dont recognize the chart_type: '+chart_type+' for the series_id='+series_id);
   }
