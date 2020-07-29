@@ -251,6 +251,7 @@ function createPieChart(the_chart, options) {
   (options.height)  ? the_chart.height(options.height) : null;
   (options.radius)  ? the_chart.radius(options.radius) : null;
   (options.innerRadius)  ? the_chart.innerRadius(options.innerRadius) : null;
-
+  (options.key_accessor) ? the_chart.keyAccessor(options.key_accessor): null;
+  (options.value_accessor) ? the_chart.valueAccessor(options.value_accessor): null;
   return the_chart; //add return so it works with createCompositeChart
 };
