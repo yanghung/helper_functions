@@ -284,5 +284,9 @@ function createBarChart(the_chart, options) {
   (options.gap) ? the_chart.gap(options.gap): null;
   (options.key_accessor) ? the_chart.keyAccessor(options.key_accessor): null;
   (options.value_accessor) ? the_chart.valueAccessor(options.value_accessor): null;
+  (options.x_axis_label) ? the_chart.xAxisLabel(options.x_axis_label): null; //if you set x axis label then include it in options, otherwise do nothing
+  (options.y_axis_label) ? the_chart.yAxisLabel(options.y_axis_label): null; //if you set y axis label then include it in options, otherwise do nothing
+  (options.x_axis_format) ? the_chart.xAxis().tickFormat(options.x_axis_format): null; //if you set y axis format then include it in options, otherwise do nothing
+  (options.y_axis_format) ? the_chart.yAxis().tickFormat(options.y_axis_format): null; //if you set y axis format then include it in options, otherwise do nothing
   return the_chart; //add return so it works with createCompositeChart
 };
