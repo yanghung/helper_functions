@@ -12,8 +12,10 @@ const dayFormat = d3.timeFormat('%d');
 const dayOfWeekFormat = d3.timeFormat('%a');
 const currencyFormat = d3.format('$,.2f');
 const currencyFormat_no_decimal = d3.format('$,.0f');
+// custom format method
+// https://stackoverflow.com/questions/15636526/set-custom-x-axis-labels-in-d3-bar-charts
 const formatCurrencyRange = function(d) {
-    return "[$"+d + ", $"+(d+1) + ")";      
+    return "[$"+d + ", $"+(d+1) + ")";
 }
 const percentFormat = d3.format(',.2%');
 const percentFormat_no_decimal = d3.format('%');
